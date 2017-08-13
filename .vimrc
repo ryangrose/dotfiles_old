@@ -1,5 +1,4 @@
-" Set coloscheme
-colorscheme candyman
+" Fix terminal coloring
 set t_ut=
 
 "Make search ignore case
@@ -54,7 +53,7 @@ nnoremap J mzJ`z
 " bindings. the idea being that you can change it later to be like... "," or
 " something and all of your leader-prefixed mappings still work, just with commas
 " now)
-" let mapleader = "\<Space>"
+let mapleader = "\<Space>"
 
 " Switch to the previous buffer (since space is the leader key, this is
 " equivalent to <Space><Tab>)
@@ -86,3 +85,32 @@ set nolist
 
 " Match indent to file
 filetype indent on
+
+
+" Plugins - vim-plug https://github.com/junegunn/vim-plug
+"
+"
+" Plugins will be downloaded under the specified directory.
+call plug#begin('~/.vim/plugged')
+
+" Declare the list of plugins.
+Plug 'morhetz/gruvbox'
+Plug 'scrooloose/nerdcommenter'
+Plug 'jceb/vim-orgmode'
+Plug 'vim-scripts/utl.vim'
+Plug 'tpope/vim-speeddating'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+    
+" Plug 'dylanaraps/wal.vim'
+
+" List ends here. Plugins become visible to Vim after this call.
+call plug#end()
+
+" NERD commenter
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+
+" Set colorscheme
+colorscheme gruvbox
+set background=dark

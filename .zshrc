@@ -90,10 +90,25 @@ if [[ -r ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.z
     source ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
 fi      
 
+# Virtualenvwrapper (for python/django)
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Devel
+export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
+source /usr/local/bin/virtualenvwrapper_lazy.sh
+
+# fzf: Fuzzy Finding tool
+#
+# Source fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Add alias for opening result in vim
+alias vf='vim $(fzf)'
+
 # My aliases
 alias v='vim'
 alias c='clear'
-alias apti='sudo apt install'
+alias apti='sudo apt-get install'
+alias agi='sudo apt-get install'
 alias untar='tar -xsvf'
 alias zshrc='v ~/.zshrc'
 alias vimrc='v ~/.vimrc'

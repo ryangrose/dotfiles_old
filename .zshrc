@@ -1,3 +1,8 @@
+# Import colorscheme from 'wal'
+# &   # Run the process in the background.
+# ( ) # Hide shell job control messages.
+# (wal -r -t &)
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -113,6 +118,7 @@ alias untar='tar -xsvf'
 alias zshrc='v ~/.zshrc'
 alias vimrc='v ~/.vimrc'
 alias music='ncmpcpp'
+alias open='xdg-open'
 
 # For todo.sh
 alias t="~/Dropbox/todo/todo.sh -d ~/Dropbox/todo/todo.cfg" 
@@ -124,3 +130,4 @@ PATH=$PATH:"/path/to/your/todo/scripts"
 
 # Make config a command for dotfiles on a git repo
 alias config='/usr/bin/git --git-dir=/home/ryan/.cfg/ --work-tree=/home/ryan'
+alias attu="ssh rgrose@attu.cs.washington.edu"

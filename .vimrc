@@ -35,20 +35,6 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 
-"
-" Python dev
-"
-" Python with virtualenv support
-" NEEDS DIFFERENT VERSION OF VIM?
-" py << EOF
-" import os
-" import sys
-" if 'VIRTUAL_ENV' in os.environ:
-  " project_base_dir = os.environ['VIRTUAL_ENV']
-  " activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-  " execfile(activate_this, dict(__file__=activate_this))
-" EOF
-
 " Set defaults for python files
 let python_highlight_all=1
 
@@ -124,6 +110,11 @@ nnoremap <Leader>- :sp<CR>
 
 " Enable 256 colors palette in Gnome Terminal
 set t_Co=256
+set termguicolors
+
+" Colors for tmux
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 " Word wrapping
 set wrap
@@ -133,9 +124,8 @@ set nolist
 " Match indent to file
 filetype indent on
 
-" Enable folding
-set foldmethod=indent
-set foldlevel=99
+" Add shortcut for creating new tabs
+nnoremap tn :tabnew<CR>
 
 " 
 " Plugins - vim-plug https://github.com/junegunn/vim-plug
@@ -156,9 +146,6 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tmhedberg/SimpylFold', {'for': 'python'}
 Plug 'vim-scripts/indentpython.vim', {'for': 'python'}
 Plug 'nvie/vim-flake8', {'for': 'python'}
-" Plug 'python-mode/python-mode'
-" Plug 'jmcantrell/vim-virtualenv'
-" Plug 'lambdalisue/vim-python-virtualenv'
 
 " For html
 Plug 'alvan/vim-closetag'
@@ -212,5 +199,16 @@ let g:syntastic_python_flake8_args='--ignore=F821'
 
 
 " Set colorscheme
+let g:gruvbox_contrast_dark="hard"
 colorscheme gruvbox
 set background=dark
+" colorscheme wal
+
+" hi! Normal ctermbg=NONE guibg=NONE
+" hi! NonText ctermbg=NONE guibg=NONE
+
+" CtrlP - enter creates new tab
+let g:ctrlp_prompt_mappings = {
+    \ 'AcceptSelection("e")': ['<c-t>'],
+    \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
+    \ }

@@ -220,8 +220,8 @@ def_key "l"
 #
 # def_key "h"
 #
-#def_key "+"
-#  volume_up
+def_key "+"
+ volume_up
 #
 def_key "h"
   previous_column
@@ -232,11 +232,11 @@ def_key "h"
 #
 # def_key "h"
 #
-#def_key "-"
-#  volume_down
+def_key "-"
+ volume_down
 #
-#def_key ":"
-#  execute_command
+def_key ":"
+ execute_command
 #
 #def_key "tab"
 #  next_screen
@@ -358,8 +358,8 @@ def_key "h"
 #def_key "u"
 #  update_database
 #
-def_key "m"
- sort_playlist
+# def_key "m"
+# sort_playlist
 #
 #def_key "ctrl-s"
 #  toggle_browser_sort_mode

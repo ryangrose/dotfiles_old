@@ -134,3 +134,4 @@ alias todo="~/Dropbox/todo/todo.sh"
 
 # Make config a command for dotfiles on a git repo
 alias config='/usr/bin/git --git-dir=/home/ryan/.cfg/ --work-tree=/home/ryan'
+alias attu=ssh rgrose@attu.cs.washington.edu

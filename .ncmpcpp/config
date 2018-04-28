@@ -35,7 +35,7 @@
 ##
 mpd_music_dir = ~/Music/library/Music
 #
-#mpd_crossfade_time = 5
+# mpd_crossfade_time = 0
 #
 ##### music visualizer #####
 ##
@@ -276,7 +276,7 @@ mpd_music_dir = ~/Music/library/Music
 ##   not available.
 ##
 #
-#song_columns_list_format = (20)[]{a} (6f)[green]{NE} (50)[white]{t|f:Title} (20)[cyan]{b} (7f)[magenta]{l}
+# song_columns_list_format = (20)[]{a} (6f)[green]{l} (50)[white]{t|f:Title} (20)[cyan]{b} (7f)[magenta]{BPM}
 #
 ##### various settings #####
 #

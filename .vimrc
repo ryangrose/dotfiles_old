@@ -1,5 +1,35 @@
+""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+"
+" Vim configuration file
+" - Ryan Grose
+"
+"
+""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+"""""""""""""""""""
+" General settings
+"""""""""""""""""""
+
+
 " Fix terminal coloring
 set t_ut=
+
+" Enable 256 colors palette in Gnome Terminal
+set t_Co=256
+
+" Word wrapping
+set wrap
+set linebreak
+set nolist
+
+" Match indent to file
+filetype indent on
+
+" Enable folding
+set foldmethod=indent
+set foldlevel=99
 
 "Make search ignore case
 set ignorecase
@@ -29,27 +59,25 @@ set expandtab
 " beyond the screen width
 set sidescroll=1
 
-
 " Default to 4 space tabs for unknown filetypes
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 
-"
-" Python dev
-"
-" Python with virtualenv support
-" NEEDS DIFFERENT VERSION OF VIM?
-" py << EOF
-" import os
-" import sys
-" if 'VIRTUAL_ENV' in os.environ:
-  " project_base_dir = os.environ['VIRTUAL_ENV']
-  " activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-  " execfile(activate_this, dict(__file__=activate_this))
-" EOF
+" Match indents on new lines intelligently
+set autoindent
+set smartindent
 
-" Set defaults for python files
+
+"""""""""""""""""""""""""""""
+" Language Specific Settings
+"""""""""""""""""""""""""""""
+
+
+"
+" Python
+"
+
 let python_highlight_all=1
 
 au BufNewFile,BufRead *.py
@@ -61,26 +89,24 @@ au BufNewFile,BufRead *.py
     \ set autoindent |
     \ set fileformat=unix |
 
-" Highlight bad whitespace in python files
-" Define BadWhitespace before using in a match
-" highlight BadWhitespace ctermbg=red guibg=darkred
-" au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+"
+" Web Dev
+"
 
-" Set defaults for web files
-au BufNewFile,BufRead *.js, *.html, *.css
+au BufNewFile,BufRead *.js
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+
+au BufNewFile,BufRead *.html,*.css
     \ set tabstop=2 |
     \ set softtabstop=2 |
     \ set shiftwidth=2 |
 
-" Match indents on new lines intelligently
-set autoindent
-set smartindent
-
-"
-"
+"""""""""""""""
 " Key Bindings
-"
-"
+"""""""""""""""
+
 
 " Don't want to press shift to go into command mode
 nnoremap ; :
@@ -93,7 +119,7 @@ set autoread
 nnoremap J mzJ`z
 
 " Make space the leader key (basically, a key that you can use to add other
-" bindings. the idea being that you can change it later to be like... "," or
+" bindings. the idea being that you can change it later to be like... ',' or
 " something and all of your leader-prefixed mappings still work, just with commas
 " now)
 let mapleader = "\<Space>"
@@ -101,6 +127,13 @@ let mapleader = "\<Space>"
 " Switch to the previous buffer (since space is the leader key, this is
 " equivalent to <Space><Tab>)
 nnoremap <Leader><Tab> :b#<CR>
+
+" Make background transparent
+map <F2> :hi Normal guibg=NONE ctermbg=NONE<CR>
+
+" easy-pandoc-templates
+noremap <C-M> :! pandoc '%:p' -o /tmp/'%:p:t'.html --template=elegant_bootstrap_menu.html --toc && firefox /tmp/'%:p:t'.html &<CR><CR>
+noremap <C-\> :! filewatcher '%:p' 'pandoc '%:p' -o /tmp/'%:p:t'.html --template=elegant_bootstrap_menu.html --toc' &<CR>
 
 "
 " Splits
@@ -120,35 +153,34 @@ nnoremap <Leader>- :sp<CR>
 " others and I use "jk" to return to command mode, since it's on home row, and
 " those two consecutive keys come up surprisingly infrequently
 "
+" I mapped Caps Lock to ESC at OS level instead, so use this on foreign
+" machines (likea school computer)
+"
 " inoremap jk <ESC>
 
-" Enable 256 colors palette in Gnome Terminal
-set t_Co=256
 
-" Word wrapping
-set wrap
-set linebreak
-set nolist
-
-" Match indent to file
-filetype indent on
-
-" Enable folding
-set foldmethod=indent
-set foldlevel=99
-
-" 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins - vim-plug https://github.com/junegunn/vim-plug
-"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Plugins will be downloaded under the specified directory.
 call plug#begin('~/.vim/plugged')
 
 " Declare the list of plugins.
+
+" Classic utility
 Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tpope/vim-unimpaired'
+
+" Airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'enricobacis/vim-airline-clock'
+
+" Syntax
+Plug 'w0rp/ale'
 " Plug 'vim-syntastic/syntastic'
 " Plug 'Valloric/YouCompleteMe'
 
@@ -156,41 +188,32 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tmhedberg/SimpylFold', {'for': 'python'}
 Plug 'vim-scripts/indentpython.vim', {'for': 'python'}
 Plug 'nvie/vim-flake8', {'for': 'python'}
-" Plug 'python-mode/python-mode'
-" Plug 'jmcantrell/vim-virtualenv'
-" Plug 'lambdalisue/vim-python-virtualenv'
+Plug 'hdima/python-syntax', {'for': 'python'}
 
 " For html
 Plug 'alvan/vim-closetag'
-    
+
 "For js
 Plug 'pangloss/vim-javascript'
-Plug 'hallettj/jslint.vim'
+" Plug 'hallettj/jslint.vim'
+" Plug 'wookiehangover/jshint.vim'
 
 " Colorscheme
 Plug 'morhetz/gruvbox'
-" Plug 'dylanaraps/wal.vim'
+Plug 'AlessandroYorba/Despacio'
+Plug 'AlessandroYorba/Alduin'
+Plug 'dylanaraps/wal.vim'
 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
-"
+""""""""""""""""""
 " Plugin settings
-"
+""""""""""""""""""
 
 " NERD commenter
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
-
-" Syntastic
-" Defaults as recommended by its repo FAQ
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
 
 " Ctrl P
 " Open new tab instead of replace
@@ -210,7 +233,13 @@ autocmd BufWritePost *.py call Flake8()
 " Ignore F821 errors (matches django)
 let g:syntastic_python_flake8_args='--ignore=F821'
 
-
+"""""""""""""""""""""""""""""""""""""""""""""""""""''
+" Appearance
+"""""""""""""""""""""""""""""""""""""""""""""""""""''
+" 
 " Set colorscheme
-colorscheme gruvbox
-set background=dark
+" colorscheme gruvbox
+" set background=dark
+" colo despacio
+colo wal
+let g:airline_theme='minimalist'

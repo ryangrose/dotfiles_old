@@ -14,6 +14,8 @@
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="agnoster"
 
+wal -R -q
+
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -131,3 +133,10 @@ PATH=$PATH:"/path/to/your/todo/scripts"
 # Make config a command for dotfiles on a git repo
 alias config='/usr/bin/git --git-dir=/home/ryan/.cfg/ --work-tree=/home/ryan'
 alias attu="ssh rgrose@attu.cs.washington.edu"
+
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# pywal
+# export PATH="${PATH}:${HOME}/.local/bin/"

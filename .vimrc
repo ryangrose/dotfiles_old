@@ -193,10 +193,17 @@ Plug 'hdima/python-syntax', {'for': 'python'}
 " For html
 Plug 'alvan/vim-closetag'
 
-"For js
+" For js
 Plug 'pangloss/vim-javascript'
 " Plug 'hallettj/jslint.vim'
 " Plug 'wookiehangover/jshint.vim'
+
+" For haskell
+Plug 'neovimhaskell/haskell-vim'
+Plug 'dag/vim2hs'
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+Plug 'eagletmt/neco-ghc'
+Plug 'eagletmt/ghcmod-vim'
 
 " Colorscheme
 Plug 'morhetz/gruvbox'
@@ -232,6 +239,12 @@ autocmd BufWritePost *.py call Flake8()
 
 " Ignore F821 errors (matches django)
 let g:syntastic_python_flake8_args='--ignore=F821'
+
+" Haskell - ghc-mod
+map <silent> tw :GhcModTypeInsert<CR>
+map <silent> ts :GhcModSplitFunCase<CR>
+map <silent> tq :GhcModType<CR>
+map <silent> te :GhcModTypeClear<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""''
 " Appearance

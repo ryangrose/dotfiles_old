@@ -140,3 +140,4 @@ alias attu="ssh rgrose@attu.cs.washington.edu"
 
 # pywal
 # export PATH="${PATH}:${HOME}/.local/bin/"
+PATH=$PATH:"/home/ryan/.cabal/bin"

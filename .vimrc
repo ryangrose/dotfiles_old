@@ -68,6 +68,8 @@ set shiftwidth=4
 set autoindent
 set smartindent
 
+" Turn on omni-completion <C-X><C-O>
+set omnifunc=syntaxcomplete#Complete
 
 """""""""""""""""""""""""""""
 " Language Specific Settings
@@ -204,6 +206,7 @@ Plug 'dag/vim2hs'
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'eagletmt/neco-ghc'
 Plug 'eagletmt/ghcmod-vim'
+Plug 'enomsg/vim-haskellConcealPlus'
 
 " Colorscheme
 Plug 'morhetz/gruvbox'
@@ -241,8 +244,8 @@ autocmd BufWritePost *.py call Flake8()
 let g:syntastic_python_flake8_args='--ignore=F821'
 
 " Haskell - ghc-mod
-map <silent> tw :GhcModTypeInsert<CR>
-map <silent> ts :GhcModSplitFunCase<CR>
+autocmd FileType haskell map <silent> tw :GhcModTypeInsert<CR>
+autocmd FileType haskell map <silent> ts :GhcModSplitFunCase<CR>
 map <silent> tq :GhcModType<CR>
 map <silent> te :GhcModTypeClear<CR>
 

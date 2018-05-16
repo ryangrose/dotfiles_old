@@ -134,7 +134,8 @@ nnoremap <Leader><Tab> :b#<CR>
 map <F2> :hi Normal guibg=NONE ctermbg=NONE<CR>
 
 " easy-pandoc-templates
-noremap <C-M> :! pandoc '%:p' -o /tmp/'%:p:t'.html --template=elegant_bootstrap_menu.html --toc && firefox /tmp/'%:p:t'.html &<CR><CR>
+noremap <Leader>o :! pandoc '%:p' -o /tmp/'%:p:t'.html --template=elegant_bootstrap_menu.html --toc && firefox /tmp/'%:p:t'.html &<CR><CR>
+noremap <silent> <Leader>m :! pandoc '%:p' -o /tmp/'%:p:t'.html --template=elegant_bootstrap_menu.html --toc<CR><CR>
 noremap <C-\> :! filewatcher '%:p' 'pandoc '%:p' -o /tmp/'%:p:t'.html --template=elegant_bootstrap_menu.html --toc' &<CR>
 
 "
@@ -174,7 +175,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'tpope/vim-unimpaired'
+" Plug 'tpope/vim-unimpaired'
 
 " Airline
 Plug 'vim-airline/vim-airline'

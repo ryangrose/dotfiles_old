@@ -260,3 +260,13 @@ map <silent> te :GhcModTypeClear<CR>
 " colo despacio
 colo wal
 let g:airline_theme='minimalist'
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Stuff in testing
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <Leader>t i<++><ESC>
+nnoremap <Leader>f /<+*+><CR>
+set scrolloff=3
+nnoremap ;; ;
+vnoremap ;; ;

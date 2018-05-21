@@ -134,8 +134,8 @@ nnoremap <Leader><Tab> :b#<CR>
 map <F2> :hi Normal guibg=NONE ctermbg=NONE<CR>
 
 " easy-pandoc-templates
-noremap <Leader>o :! pandoc '%:p' -o /tmp/'%:p:t'.html --template=elegant_bootstrap_menu.html --toc && firefox /tmp/'%:p:t'.html &<CR><CR>
-noremap <silent> <Leader>m :! pandoc '%:p' -o /tmp/'%:p:t'.html --template=elegant_bootstrap_menu.html --toc<CR><CR>
+noremap <Leader>o :! pandoc '%:p' -o /tmp/'%:p:t'.html --template=clean_menu.html --toc --highlight-style=zenburn && firefox /tmp/'%:p:t'.html &<CR><CR>
+noremap <silent> <Leader>m :! pandoc '%:p' -o /tmp/'%:p:t'.html --template=clean_menu.html --toc --highlight-style=zenburn<CR><CR>
 noremap <C-\> :! filewatcher '%:p' 'pandoc '%:p' -o /tmp/'%:p:t'.html --template=elegant_bootstrap_menu.html --toc' &<CR>
 
 "
@@ -270,3 +270,9 @@ nnoremap <Leader>f /<+*+><CR>
 set scrolloff=3
 nnoremap ;; ;
 vnoremap ;; ;
+"
+" source $MYVIMRC reloads the saved $MYVIMRC
+:nmap <Leader>s :source $MYVIMRC<CR>
+
+" opens $MYVIMRC for editing, or use :tabedit $MYVIMRC
+:nmap <Leader>v :tabedit $MYVIMRC<CR>

@@ -198,6 +198,7 @@ Plug 'alvan/vim-closetag'
 
 " For js
 Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 " Plug 'hallettj/jslint.vim'
 " Plug 'wookiehangover/jshint.vim'
 
@@ -233,6 +234,10 @@ let g:ctrlp_prompt_mappings = {
     \ 'AcceptSelection("t")': ['<cr>'],
     \ }
 
+" ignore node_modules
+set wildignore+=*/node_modules/*,
+let g:ctrlp_custom_ignore = '*/node_modules/*'
+
 " SimpylFold
 let g:SimpylFold_docstring_preview = 1
 let g:SimpylFold_fold_import = 1
@@ -266,7 +271,7 @@ let g:airline_theme='minimalist'
 " Stuff in testing
 """""""""""""""""""""""""""""""""""""""""""""""""""""
 nnoremap <Leader>t i<++><ESC>
-nnoremap <Leader>f /<+*+><CR>
+nnoremap <Leader>f /<+.*+><CR>
 set scrolloff=3
 nnoremap ;; ;
 vnoremap ;; ;

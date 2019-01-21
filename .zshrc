@@ -141,3 +141,6 @@ export NVM_DIR="$HOME/.nvm"
 # pywal
 export PATH="${PATH}:${HOME}/.local/bin/"
 PATH=$PATH:"/home/ryan/.cabal/bin"
+
+# FZF TODO
+# df(dir_name) = dir_name/$(ls dir_name | fzf)

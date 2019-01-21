@@ -190,7 +190,7 @@ Plug 'w0rp/ale'
 " For Python
 Plug 'tmhedberg/SimpylFold', {'for': 'python'}
 Plug 'vim-scripts/indentpython.vim', {'for': 'python'}
-Plug 'nvie/vim-flake8', {'for': 'python'}
+" Plug 'nvie/vim-flake8', {'for': 'python'}
 Plug 'hdima/python-syntax', {'for': 'python'}
 
 " For html
@@ -216,6 +216,8 @@ Plug 'AlessandroYorba/Despacio'
 Plug 'AlessandroYorba/Alduin'
 Plug 'dylanaraps/wal.vim'
 
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax' 
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
@@ -244,10 +246,7 @@ let g:SimpylFold_fold_import = 1
 
 " Flake8
 " auto run on write
-autocmd BufWritePost *.py call Flake8()
-
-" Ignore F821 errors (matches django)
-let g:syntastic_python_flake8_args='--ignore=F821'
+" autocmd BufWritePost *.py call Flake8()
 
 " Haskell - ghc-mod
 autocmd FileType haskell map <silent> tw :GhcModTypeInsert<CR>
